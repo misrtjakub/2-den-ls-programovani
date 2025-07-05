@@ -108,6 +108,15 @@
 
 			<section>
 				<section>
+					<h1>Desítková soustava</h1>
+					<ul>
+						<li class="fragment">Používá deset číslic: <b>0</b> až <b>9</b></li>
+						<li class="fragment">Každá pozice má hodnotu jako mocnina 10</li>
+						<li class="fragment">Nejběžnější soustava</li>
+					</ul>
+				</section>
+
+				<section>
 					<h1>Binární soustava</h1>
 					<ul>
 						<li class="fragment">Používá jen dvě číslice: <b>0</b> a <b>1</b></li>
@@ -117,26 +126,12 @@
 				</section>
 
 				<section>
-					<h2>Jak spočítat binární číslo?</h2>
-					<p class="fragment">Příklad: <b>1011</b></p>
-					<ul>
-						<li class="fragment">1 × 2³ = 8</li>
-						<li class="fragment">0 × 2² = 0</li>
-						<li class="fragment">1 × 2¹ = 2</li>
-						<li class="fragment">1 × 2⁰ = 1</li>
-						<li class="fragment"><b>Výsledek: 8 + 0 + 2 + 1 = 11</b></li>
-					</ul>
+					<h2>Jak převést z binární do desítkové</h2>
+					<p class="fragment">Ukázka na tabuli</p>
 				</section>
 				<section>
 					<h2>Jak převést z desítkové do binární?</h2>
-					<p class="fragment">Příklad: <b>13</b></p>
-					<ul>
-						<li class="fragment">13 ÷ 2 = 6 zbytek <b>1</b></li>
-						<li class="fragment">6 ÷ 2 = 3 zbytek <b>0</b></li>
-						<li class="fragment">3 ÷ 2 = 1 zbytek <b>1</b></li>
-						<li class="fragment">1 ÷ 2 = 0 zbytek <b>1</b></li>
-						<li class="fragment"><b>Výsledek: 1101</b> (čteme zespodu nahoru)</li>
-					</ul>
+					<p class="fragment">Ukázka na tabuli</p>
 				</section>
 				<section>
 					<h2>Binární operace</h2>
@@ -242,9 +237,47 @@ int shiftRight = a >> 1; // 0010 = 2
 					<p>3. Zkus změnit hodnoty a sleduj výsledek</p>
 				</section>
 
+			</section>
+			<section>
+				<section>
+					<h1>Porovnávání čísel</h1>
+					<ul>
+						<li class="fragment">Používá se pro rozhodování v podmínkách (if, while…)</li>
+						<li class="fragment">Vrací hodnotu <code>true</code> nebo <code>false</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Porovnávací operátory</h2>
+					<ul>
+						<li class="fragment"><code>&lt;</code> menší než</li>
+						<li class="fragment"><code>&lt;=</code> menší nebo rovno</li>
+						<li class="fragment"><code>&gt;</code> větší než</li>
+						<li class="fragment"><code>&gt;=</code> větší nebo rovno</li>
+						<li class="fragment"><code>==</code> rovno</li>
+						<li class="fragment"><code>!=</code> nerovno</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Ukázka porovnání</h2>
+				</section>
+				<section>
+					<h2>Úkol</h2>
+					<ul>
+						<li>Vytvoř dvě čísla: <code>a = 10</code>, <code>b = 7</code></li>
+						<li>Vytvoř tři <code>bool</code> proměnné pro:</li>
+						<ul>
+							<li><code>a > b</code></li>
+							<li><code>a &lt;= b</code></li>
+							<li><code>a == b</code></li>
+						</ul>
+						<li>Výsledky vypiš do konzole</li>
+						<li>Změň hodnoty a sleduj, co se změní</li>
+					</ul>
+				</section>
 
 			</section>
-
 
 			<section>
 				<section>
@@ -305,44 +338,18 @@ else {
 }
   </code></pre>
 				</section>
-			</section>
-			<section>
 				<section>
-					<h1>Porovnávání čísel</h1>
+					<h2>ÚKOL</h2>
 					<ul>
-						<li class="fragment">Používá se pro rozhodování v podmínkách (if, while…)</li>
-						<li class="fragment">Vrací hodnotu <code>true</code> nebo <code>false</code></li>
+						<li class="fragment">Zeptej se uživatele na jeho věk</li>
+						<li class="fragment">Pokud je mu méně než 13, napiš „Jsi dítě“</li>
+						<li class="fragment">Pokud je mezi 13 a 17, napiš „Jsi teenager“</li>
+						<li class="fragment">Pokud je 18 a více, napiš „Jsi dospělý“</li>
 					</ul>
-				</section>
-
-				<section>
-					<h2>Porovnávací operátory</h2>
-					<ul>
-						<li class="fragment"><code>&lt;</code> menší než</li>
-						<li class="fragment"><code>&lt;=</code> menší nebo rovno</li>
-						<li class="fragment"><code>&gt;</code> větší než</li>
-						<li class="fragment"><code>&gt;=</code> větší nebo rovno</li>
-						<li class="fragment"><code>==</code> rovno</li>
-						<li class="fragment"><code>!=</code> nerovno</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Ukázka porovnání</h2>
-				</section>
-				<section>
-					<h2>Úkol</h2>
-					<p>1. Vytvoř dvě proměnné typu <code>int</code>, např. <code>a = 10</code> a <code>b = 7</code></p>
-					<p>2. Pomocí <code>if</code> podmínek zjisti a vypiš:</p>
-					<ul>
-						<li>Jestli <code>a</code> je větší než <code>b</code></li>
-						<li>Jestli <code>a</code> je menší nebo rovno <code>b</code></li>
-						<li>Jestli <code>a</code> je stejné jako <code>b</code></li>
-					</ul>
-					<p>3. Změň hodnoty a sleduj, jak se výstup mění</p>
 				</section>
 
 			</section>
+
 			<section>
 				<section>
 					<h1>Parsing</h1>
@@ -422,9 +429,26 @@ if (ok) {
 						<li class="fragment">Uživatelsky přívětivější a odolnější aplikace</li>
 					</ul>
 				</section>
-
+				<section>
+					<h2>ÚKOL</h2>
+					<ul>
+						<li class="fragment">Požádej uživatele o zadání věku</li>
+						<li class="fragment">Použij <code>int.TryParse()</code> k převedení vstupu</li>
+						<li class="fragment">Pokud je převod úspěšný:</li>
+						<ul>
+							<li class="fragment">- vypiš „Je ti X let“</li>
+							<li class="fragment">- zkus vypsat, jestli je plnoletý (18+)</li>
+						</ul>
+						<li class="fragment">Pokud převod selže:</li>
+						<ul>
+							<li class="fragment">- napiš „Zadal jsi neplatné číslo“</li>
+						</ul>
+					</ul>
+				</section>
 
 			</section>
+
+
 			<section>
 				<section>
 					<h1>Pole</h1>
