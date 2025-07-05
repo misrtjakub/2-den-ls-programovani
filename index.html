@@ -405,7 +405,7 @@ bool success3 = decimal.TryParse("100.25", out z);
 				</section>
 
 				<section>
-					<h2>Bezpečné parsování: TryParse()</h2>
+					<h2>Metoda <code>TryParse()</code></h2>
 					<pre><code class="language-csharp" data-line-numbers>string s = "42";
 bool ok = int.TryParse(s, out int x);
 
@@ -421,13 +421,7 @@ if (ok) {
 					</ul>
 				</section>
 				<section>
-					<h2>TryParse = Robustní kód</h2>
-					<ul>
-						<li class="fragment">Nezáleží, co uživatel zadá</li>
-						<li class="fragment">Program nespadne</li>
-						<li class="fragment">Na neplatný vstup můžeme reagovat</li>
-						<li class="fragment">Uživatelsky přívětivější a odolnější aplikace</li>
-					</ul>
+					<h2>V čem je <code>TryParse()</code> lepší?</h2>
 				</section>
 				<section>
 					<h2>ÚKOL</h2>
@@ -465,15 +459,20 @@ if (ok) {
 				</section>
 
 				<section>
-					<h2>Příklad: Dny v týdnu</h2>
-					<pre><code class="language-csharp" data-line-numbers>string[] daysOfWeek = {
-    "pondělí", "úterý", "středa",
-    "čtvrtek", "pátek", "sobota", "neděle"
-};
+					<h2>Jak vypadá pole?</h2>
+					<pre><code class="language-csharp" data-line-numbers>int[] numbers = { 1, 2, 3 };
+  </code></pre>
+					<ul>
+						<li class="fragment"><code>int[]</code> - typ pole (pole celých čísel)</li>
+						<li class="fragment"><code>numbers</code> - název pole</li>
+						<li class="fragment">{ ... } - hodnoty v poli, oddělené čárkou</li>
+						<li class="fragment"><code>numbers[0]</code> = 1 (index začíná od nuly)</li>
+					</ul>
+				</section>
 
-Console.WriteLine(daysOfWeek[0]); // pondělí
-Console.WriteLine(daysOfWeek[6]); // neděle
-    </code></pre>
+
+				<section>
+					<h2>Příklad: Dny v týdnu</h2>
 				</section>
 
 				<section>
@@ -481,7 +480,6 @@ Console.WriteLine(daysOfWeek[6]); // neděle
 					<pre><code class="language-csharp" data-line-numbers>string[] months;
 months = new string[12];
     </code></pre>
-					<p class="fragment">Pole má danou velikost a prázdné hodnoty</p>
 				</section>
 
 				<section>
@@ -523,34 +521,43 @@ Console.WriteLine(daysInMonths[0]);     // 31
 				</section>
 
 				<section>
-					<h2>Vytvoření Listu</h2>
+					<h2>Jak vypadá List?</h2>
 					<pre><code class="language-csharp" data-line-numbers>List&lt;int&gt; numbers = new List&lt;int&gt;();
 List&lt;int&gt; numbers2 = new List&lt;int&gt; { 10, 20, 30 };
-</code></pre>
+  </code></pre>
+					<ul>
+						<li class="fragment"><code>List&lt;int&gt;</code> - typ Listu (seznam celých čísel)</li>
+						<li class="fragment"><code>numbers</code> - název seznamu</li>
+						<li class="fragment"><code>{ ... }</code> - hodnoty zadané při vytvoření</li>
+						<li class="fragment"><code>numbers2[0]</code> = 10 (indexování funguje stejně jako u pole)</li>
+					</ul>
 				</section>
+
 
 				<section>
 					<h2>Přidávání a přístup</h2>
-					<pre><code class="language-csharp" data-line-numbers>numbers.Add(40); // přidá 40 na konec seznamu
-int prvni = numbers[0]; // přístup k prvnímu prvku
-int kolik = numbers.Count; // počet prvků v seznamu
+					<pre><code class="language-csharp" data-line-numbers>numbers.Add(40); 
+int prvni = numbers[0]; 
+int kolik = numbers.Count;
 </code></pre>
 				</section>
 
 				<section>
 					<h2>Mazání prvků</h2>
-					<pre><code class="language-csharp" data-line-numbers>numbers.Remove(20);    // smaže první výskyt 20
-numbers.RemoveAt(1);   // smaže prvek na indexu 1
+					<pre><code class="language-csharp" data-line-numbers>numbers.Remove(20); 
+numbers.RemoveAt(1); 
 </code></pre>
 				</section>
 
 				<section>
 					<h2>ÚKOL</h2>
-					<p>1. Vytvoř List s čísly: 100, 200, 300</p>
-					<p>2. Přidej číslo 400</p>
-					<p>3. Smaž 200</p>
-					<p>4. Vypiš počet prvků v listu</p>
-					<p>5. Vypiš první prvek</p>
+					<ul>
+						<li class="fragment">Vytvoř List s čísly: 100, 200, 300</li>
+						<li class="fragment">Přidej číslo 400</li>
+						<li class="fragment">Smaž 200</li>
+						<li class="fragment">Vypiš počet prvků v listu</li>
+						<li class="fragment">Vypiš první prvek</li>
+					</ul>
 				</section>
 
 
@@ -573,49 +580,16 @@ numbers.RemoveAt(1);   // smaže prvek na indexu 1
 						<li class="fragment">Hodí se třeba pro práci s polem nebo Listem</li>
 					</ul>
 				</section>
-
 				<section>
-					<h2>Cyklus for</h2>
-					<pre><code class="language-csharp" data-line-numbers>for (int i = 0; i < 5; i++) {
-    Console.WriteLine("Ahoj");
-}
-  </code></pre>
-					<p class="fragment">Vypíše „Ahoj“ pětkrát</p>
+					<h2>For</h2>
+				</section>
+				<section>
+					<h2>Foreach</h2>
+				</section>
+				<section>
+					<h2>While</h2>
 				</section>
 
-				<section>
-					<h2>Procházení pole pomocí for</h2>
-					<pre><code class="language-csharp" data-line-numbers>string[] names = { "Anna", "Tom", "Eva" };
-
-for (int i = 0; i < names.Length; i++) {
-    Console.WriteLine(names[i]);
-}
-  </code></pre>
-					<p class="fragment">Vypíše všechna jména</p>
-				</section>
-
-				<section>
-					<h2>Cyklus foreach</h2>
-					<pre><code class="language-csharp" data-line-numbers>List&lt;int&gt; scores = new List&lt;int&gt; { 5, 3, 1 };
-
-foreach (int score in scores) {
-    Console.WriteLine(score);
-}
-  </code></pre>
-					<p class="fragment">Pro každý prvek v Listu udělá to stejné</p>
-				</section>
-
-				<section>
-					<h2>Cyklus while</h2>
-					<pre><code class="language-csharp" data-line-numbers>int x = 0;
-
-while (x < 3) {
-    Console.WriteLine("Zdar");
-    x++;
-}
-  </code></pre>
-					<p class="fragment">Opakuje se, dokud <code>x < 3</code></p>
-				</section>
 				<section>
 					<h2>Úkol</h2>
 					<p>Vytvoř pole se 3 zvířaty.</p>
@@ -641,7 +615,14 @@ Slon
 				<section>
 					<h1>Git a GitHub</h1>
 					<p class="fragment">Nejlepší přítel vývojáře</p>
+					<div class="fragment" style="display: flex; justify-content: center; gap: 60px;">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1920px-Git-logo.svg.png"
+							alt="Git logo" width="250">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/1024px-GitHub_Invertocat_Logo.svg.png"
+							alt="GitHub logo" width="250">
+					</div>
 				</section>
+
 				<section>
 					<h2>Git</h2>
 					<ul>
@@ -650,7 +631,11 @@ Slon
 						<li class="fragment">Pomáhá dokumentovat vývoj</li>
 						<li class="fragment">Umožňuje spolupráci více lidí na jednom projektu</li>
 					</ul>
+					<img class="fragment"
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1920px-Git-logo.svg.png"
+						alt="Git logo" width="250" style="margin-top: 20px;">
 				</section>
+
 				<section>
 					<h2>GitHub</h2>
 					<ul>
@@ -661,6 +646,9 @@ Slon
 						<li class="fragment">Nabízí další nástroje jako např. <strong>GitHub Actions</strong> pro
 							automatizaci</li>
 					</ul>
+					<img class="fragment"
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/1024px-GitHub_Invertocat_Logo.svg.png"
+						alt="GitHub logo" width="120" style="margin-top: 20px;">
 				</section>
 				<section>
 					<h2>Git - Terminologie</h2>
