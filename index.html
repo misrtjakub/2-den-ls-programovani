@@ -1,40 +1,818 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>DEN 2</h1>
+			</section>
+			<section>
+				<h2>Opakování - Den 1</h2>
+				<ul>
+					<li>Co je to proměnná a k čemu slouží?</li>
+					<li>Jaký je rozdíl mezi <code>int</code>, <code>string</code> a <code>bool</code>?</li>
+					<li>Jaký je rozdíl mezi <code>Console.Write</code> a <code>Console.WriteLine</code>?</li>
+					<li>Jak načteme vstup od uživatele?</li>
+					<li>Jak vypadá základní struktura C# programu?</li>
+					<li>Co znamená <code>using System;</code> na začátku souboru?</li>
+					<li>K čemu slouží komentáře v kódu?</li>
+				</ul>
+			</section>
+
+
+
+			<section>
+				<section>
+					<h1>Složené přiřazení</h1>
+					<p class="fragment">Zkrácený zápis pro operaci a přiřazení zároveň</p>
+				</section>
+
+				<section>
+					<h2>Co je složené přiřazení?</h2>
+					<ul>
+						<li class="fragment"><code>x += 5;</code> je zkratka pro <code>x = x + 5;</code></li>
+						<li class="fragment">Ušetří místo a je přehlednější</li>
+						<li class="fragment">Funguje s různými operacemi: +, -, *, /, %</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Nejběžnější operátory</h2>
+					<ul>
+						<li class="fragment"><code>+=</code> přičte hodnotu</li>
+						<li class="fragment"><code>-=</code> odečte hodnotu</li>
+						<li class="fragment"><code>*=</code> vynásobí hodnotu</li>
+						<li class="fragment"><code>/=</code> vydělí hodnotu</li>
+						<li class="fragment"><code>%=</code> zbytek po dělení</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Příklad: += a -=</h2>
+					<pre><code class="language-csharp" data-line-numbers>int value = 10;
+
+value += 5;  // value = 15
+value -= 3;  // value = 12
+
+Console.WriteLine(value);
+  </code></pre>
+				</section>
+
+				<section>
+					<h2>Příklad: *= a /=</h2>
+					<pre><code class="language-csharp" data-line-numbers>int number = 4;
+
+number *= 2;  // number = 8
+number /= 4;  // number = 2
+
+Console.WriteLine(number);
+  </code></pre>
+				</section>
+
+				<section>
+					<h2>Příklad: %= (zbytek po dělení)</h2>
+					<pre><code class="language-csharp" data-line-numbers>int total = 10;
+
+total %= 4;  // total = 2 (zbytek z 10 / 4)
+
+Console.WriteLine(total);
+  </code></pre>
+				</section>
+
+				<section>
+					<h2>Proč se to hodí?</h2>
+					<ul>
+						<li class="fragment">Zápis je kratší a přehlednější</li>
+						<li class="fragment">Zlepšuje čitelnost kódu</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>příklad</h2>
+					<pre><code class="language-csharp" data-line-numbers>int sum = 0;
+
+for (int i = 1; i <= 5; i++) {
+    sum += i;  // přičítá čísla 1 až 5
+}
+
+Console.WriteLine("Součet: " + sum);  // 15
+  </code></pre>
+				</section>
+				<section>
+					<h2>ÚKOL</h2>
+					<p>1. Vytvoř proměnnou <code>int score = 0;</code></p>
+					<p>2. Přičti k ní 10</p>
+					<p>3. Vynásob ji 2</p>
+					<p>4. Odečti 5</p>
+					<p>5. Vypiš výsledek do konzole</p>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h1>Binární soustava</h1>
+					<ul>
+						<li class="fragment">Používá jen dvě číslice: <b>0</b> a <b>1</b></li>
+						<li class="fragment">Každá pozice má hodnotu jako mocnina 2</li>
+						<li class="fragment">Používá se uvnitř počítačů pro reprezentaci dat</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Jak spočítat binární číslo?</h2>
+					<p class="fragment">Příklad: <b>1011</b></p>
+					<ul>
+						<li class="fragment">1 × 2³ = 8</li>
+						<li class="fragment">0 × 2² = 0</li>
+						<li class="fragment">1 × 2¹ = 2</li>
+						<li class="fragment">1 × 2⁰ = 1</li>
+						<li class="fragment"><b>Výsledek: 8 + 0 + 2 + 1 = 11</b></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Jak převést z desítkové do binární?</h2>
+					<p class="fragment">Příklad: <b>13</b></p>
+					<ul>
+						<li class="fragment">13 ÷ 2 = 6 zbytek <b>1</b></li>
+						<li class="fragment">6 ÷ 2 = 3 zbytek <b>0</b></li>
+						<li class="fragment">3 ÷ 2 = 1 zbytek <b>1</b></li>
+						<li class="fragment">1 ÷ 2 = 0 zbytek <b>1</b></li>
+						<li class="fragment"><b>Výsledek: 1101</b> (čteme zespodu nahoru)</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Binární operace</h2>
+					<ul>
+						<li class="fragment">Operace na úrovni bitů</li>
+						<li class="fragment">Používají se hlavně s celými čísly</li>
+						<li class="fragment">Užitečné např. pro ukládání oprávnění nebo zapínání funkcí (např. zvuk,
+							tmavý režim)</li>
+						<li class="fragment">Používá se i v kryptografii nebo při optimalizaci dat (např. komprese,
+							šifrování)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Základní binární operátory</h2>
+					<ul>
+						<li class="fragment"><code>&</code> (bitové AND)</li>
+						<li class="fragment"><code>|</code> (bitové OR)</li>
+						<li class="fragment"><code>^</code> (bitové XOR)</li>
+						<li class="fragment"><code>~</code> (bitová negace)</li>
+						<li class="fragment"><code>&lt;&lt;</code> (posun doleva)</li>
+						<li class="fragment"><code>&gt;&gt;</code> (posun doprava)</li>
+					</ul>
+				</section>
+				<section>
+					<h2>& (bitové AND)</h2>
+					<ul>
+						<li class="fragment">Porovná každý bit dvou čísel</li>
+						<li class="fragment">Výsledek je 1 jen pokud jsou oba bity 1</li>
+						<li class="fragment">Používá se pro zjištění, zda jsou určité bity nastavené</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>| (bitové OR)</h2>
+					<ul>
+						<li class="fragment">Porovná každý bit dvou čísel</li>
+						<li class="fragment">Výsledek je 1, pokud aspoň jeden bit je 1</li>
+						<li class="fragment">Používá se pro zapnutí určitých bitů</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>^ (bitové XOR)</h2>
+					<ul>
+						<li class="fragment">Porovná každý bit dvou čísel</li>
+						<li class="fragment">Výsledek je 1, pokud se bity liší</li>
+						<li class="fragment">Používá se např. v kryptografii</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>~ (bitová negace)</h2>
+					<ul>
+						<li class="fragment">Převrátí každý bit čísla</li>
+						<li class="fragment">Z jedničky udělá nulu a obráceně</li>
+						<li class="fragment">Mění i znaménko čísla</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>&lt;&lt; (posun doleva)</h2>
+					<ul>
+						<li class="fragment">Posune všechny bity doleva o daný počet míst</li>
+						<li class="fragment">Výsledkem je vynásobení čísla mocninou 2</li>
+						<li class="fragment">Rychlá alternativa k násobení</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>&gt;&gt; (posun doprava)</h2>
+					<ul>
+						<li class="fragment">Posune všechny bity doprava o daný počet míst</li>
+						<li class="fragment">Výsledkem je celočíselné dělení čísla mocninou 2</li>
+						<li class="fragment">Rychlá alternativa k dělení</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Příklad</h2>
+					<pre><code class="language-csharp" data-line-numbers>int a = 5;   // 0101
+int b = 3;   // 0011
+
+int and = a & b;   // 0001 = 1
+int or = a | b;    // 0111 = 7
+int xor = a ^ b;   // 0110 = 6
+int notA = ~a;     // 11111111 11111111 11111111 11111010 = -6
+int shiftLeft = a << 1;  // 1010 = 10
+int shiftRight = a >> 1; // 0010 = 2
+  </code></pre>
+				</section>
+				<section>
+					<h2>ÚKOL</h2>
+					<p>1. Vytvoř dvě proměnné: <code>int a = 12;</code> a <code>int b = 5;</code></p>
+					<p>2. Pomocí binárních operátorů spočítej a vypiš:</p>
+					<ul>
+						<li><code>a &amp; b</code></li>
+						<li><code>a | b</code></li>
+						<li><code>a ^ b</code></li>
+						<li><code>a &lt;&lt; 1</code></li>
+						<li><code>a &gt;&gt; 1</code></li>
+					</ul>
+					<p>3. Zkus změnit hodnoty a sleduj výsledek</p>
+				</section>
+
+
+			</section>
+
+
+			<section>
+				<section>
+					<h1>Podmínky</h1>
+				</section>
+				<section>
+					<h2>PODMÍNKA</h2>
+					<ul>
+						<li class="fragment">způsob <strong>větvení</strong> programů</li>
+						<li class="fragment"><u>podmiňujeme</u> volání dalších příkazů</li>
+						<li class="fragment">zjišťujeme, zda je nějaké tvrzení platné</li>
+						<li class="fragment"><strong>booleanova hodnota</strong></li>
+					</ul>
+				</section>
+				<section>
+					<h2>if / else if / else</h2>
+					<ul>
+						<li class="fragment"><code>if</code> - provede kód, pokud je podmínka splněna</li>
+						<li class="fragment"><code>else if</code> - kontroluje další podmínky, pokud předchozí neplatila
+						</li>
+						<li class="fragment"><code>else</code> - provede kód, pokud žádná předchozí podmínka nebyla
+							splněna</li>
+						<li class="fragment">Používá se pro rozhodování mezi více možnostmi</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>ZÁKLADNÍ PODMÍNKA</h2>
+					<pre><code class="language-csharp" data-line-numbers>Console.WriteLine("Ahoj!");
+
+if (true) {
+    Console.WriteLine("Ahoj po druhé!");
+}
+  </code></pre>
+				</section>
+				<section>
+					<h2>NEPLATNÉ TVRZENÍ</h2>
+					<pre><code class="language-csharp" data-line-numbers>Console.WriteLine("Ahoj!");
+
+if (false) {
+    Console.WriteLine("Tohle neuvidíš. :/");
+}
+  </code></pre>
+				</section>
+				<section>
+					<h2>PODMÍNKA</h2>
+					<pre><code class="language-csharp" data-line-numbers>Console.Write("Zadej své jméno: ");
+string name = Console.ReadLine();
+
+if (name == "Anna") {
+    Console.WriteLine("Ahoj Anno!");
+} 
+else if (name == "Karel") {
+    Console.WriteLine("Nazdar Karle!");
+} 
+else {
+    Console.WriteLine("Těší mě, " + name + "!");
+}
+  </code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>Porovnávání čísel</h1>
+					<ul>
+						<li class="fragment">Používá se pro rozhodování v podmínkách (if, while…)</li>
+						<li class="fragment">Vrací hodnotu <code>true</code> nebo <code>false</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Porovnávací operátory</h2>
+					<ul>
+						<li class="fragment"><code>&lt;</code> menší než</li>
+						<li class="fragment"><code>&lt;=</code> menší nebo rovno</li>
+						<li class="fragment"><code>&gt;</code> větší než</li>
+						<li class="fragment"><code>&gt;=</code> větší nebo rovno</li>
+						<li class="fragment"><code>==</code> rovno</li>
+						<li class="fragment"><code>!=</code> nerovno</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Příklad porovnání</h2>
+				</section>
+				<section>
+					<h2>Úkol</h2>
+					<p>1. Vytvoř dvě proměnné typu <code>int</code>, např. <code>a = 10</code> a <code>b = 7</code></p>
+					<p>2. Pomocí <code>if</code> podmínek zjisti a vypiš:</p>
+					<ul>
+						<li>Jestli <code>a</code> je větší než <code>b</code></li>
+						<li>Jestli <code>a</code> je menší nebo rovno <code>b</code></li>
+						<li>Jestli <code>a</code> je stejné jako <code>b</code></li>
+					</ul>
+					<p>3. Změň hodnoty a sleduj, jak se výstup mění</p>
+				</section>
+
+			</section>
+			<section>
+				<section>
+					<h1>Parsing v C#</h1>
+					<p class="fragment">Jak převést <code>string</code> na číslo a nezabít program</p>
+				</section>
+
+				<section>
+					<h2>Proč potřebujeme parsing?</h2>
+					<ul>
+						<li class="fragment">Všechny vstupy z konzole jsou typu <code>string</code></li>
+						<li class="fragment">Ale my pracujeme s typy jako <code>int</code>, <code>double</code>,
+							<code>decimal</code>
+						</li>
+						<li class="fragment">Musíme tedy převést (parsovat) řetězec na číselnou hodnotu</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Metoda <code>Parse()</code></h2>
+					<pre><code class="language-csharp" data-line-numbers>int i = int.Parse("123");    // OK
+int j = int.Parse("abc");    // Program spadne
+  </code></pre>
+					<ul>
+						<li class="fragment"><code>Parse()</code> je jednoduché</li>
+						<li class="fragment">ALE způsobí pád programu, pokud vstup není validní</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Obecný tvar metody Parse</h2>
+					<pre><code class="language-csharp" data-line-numbers>int x = int.Parse("123");
+double y = double.Parse("3.14");
+decimal z = decimal.Parse("100.25");
+  </code></pre>
+					<p class="fragment">Všechny metody mají tvar: <code>typ.Parse(string)</code></p>
+				</section>
+
+				<section>
+					<h2>Co když uživatel zadá neplatný vstup?</h2>
+					<p class="fragment">Program spadne</p>
+					<pre class="fragment"><code class="language-csharp" data-line-numbers>string input = "neco";
+int number = int.Parse(input); // Výjimka: Formátová chyba
+  </code></pre>
+					<p class="fragment">Řešením je použití <code>TryParse()</code></p>
+				</section>
+
+				<section>
+					<h2>Bezpečné parsování: TryParse()</h2>
+					<pre><code class="language-csharp" data-line-numbers>string s = "42";
+bool ok = int.TryParse(s, out int x);
+
+if (ok) {
+    Console.WriteLine("Zadal jsi číslo: " + x);
+} else {
+    Console.WriteLine("Neplatný vstup.");
+}
+  </code></pre>
+					<ul>
+						<li class="fragment">Vrací <code>true</code> pokud převod proběhl úspěšně</li>
+						<li class="fragment">Výsledek převodu je uložen do <code>x</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Obecný tvar TryParse</h2>
+					<pre><code class="language-csharp" data-line-numbers>// Int:
+bool b1 = int.TryParse(s, out int x);
+
+// Decimal:
+bool b2 = decimal.TryParse(s, out decimal d);
+  </code></pre>
+					<p class="fragment">Výstupní proměnná <code>x</code> je naplněna hodnotou nebo nulou</p>
+				</section>
+
+				<section>
+					<h2>Jak funguje <code>out</code> v TryParse</h2>
+					<ul>
+						<li class="fragment">Proměnná je předána jako „prázdná schránka“</li>
+						<li class="fragment">Metoda TryParse se do ní pokusí uložit výsledek</li>
+						<li class="fragment">Pokud se převod podaří:</li>
+						<ul>
+							<li class="fragment">→ proměnná obsahuje převedené číslo</li>
+							<li class="fragment">→ TryParse vrátí <code>true</code></li>
+						</ul>
+						<li class="fragment">Pokud se převod nepodaří:</li>
+						<ul>
+							<li class="fragment">→ proměnná zůstane na výchozí hodnotě (např. 0)</li>
+							<li class="fragment">→ TryParse vrátí <code>false</code></li>
+						</ul>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Ukázka použití v podmínce</h2>
+					<pre><code class="language-csharp" data-line-numbers>Console.Write("Zadej číslo: ");
+string input = Console.ReadLine();
+
+if (int.TryParse(input, out int number)) {
+    Console.WriteLine("Díky! Zadals číslo: " + number);
+} else {
+    Console.WriteLine("Tohle nebylo platné číslo.");
+}
+  </code></pre>
+				</section>
+
+				<section>
+					<h2>TryParse = Robustní kód</h2>
+					<ul>
+						<li class="fragment">Nezáleží, co uživatel zadá</li>
+						<li class="fragment">Program nespadne</li>
+						<li class="fragment">Na neplatný vstup můžeme reagovat</li>
+						<li class="fragment">Uživatelsky přívětivější a odolnější aplikace</li>
+					</ul>
+				</section>
+
+
+			</section>
+			<section>
+				<section>
+					<h1>Pole v C#</h1>
+					<p class="fragment">Umožňují uložit více hodnot do jedné proměnné</p>
+				</section>
+
+				<section>
+					<h2>Co je pole?</h2>
+					<ul>
+						<li class="fragment">Více prvků stejného typu</li>
+						<li class="fragment">Přístup přes index (od 0)</li>
+						<li class="fragment">Velikost je pevná</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Příklad: Dny v týdnu</h2>
+					<pre><code class="language-csharp" data-line-numbers>string[] daysOfWeek = {
+    "pondělí", "úterý", "středa",
+    "čtvrtek", "pátek", "sobota", "neděle"
+};
+
+Console.WriteLine(daysOfWeek[0]); // pondělí
+Console.WriteLine(daysOfWeek[6]); // neděle
+    </code></pre>
+				</section>
+
+				<section>
+					<h2>Deklarace + pozdější inicializace</h2>
+					<pre><code class="language-csharp" data-line-numbers>string[] months;
+months = new string[12];
+    </code></pre>
+					<p class="fragment">Pole má danou velikost a prázdné hodnoty</p>
+				</section>
+
+				<section>
+					<h2>Počet prvků v poli</h2>
+					<pre><code class="language-csharp" data-line-numbers>int[] daysInMonths = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+Console.WriteLine(daysInMonths.Length); // 12
+Console.WriteLine(daysInMonths[0]);     // 31
+    </code></pre>
+					<ul>
+						<li class="fragment"><code>.Length</code> říká, kolik hodnot pole obsahuje</li>
+						<li class="fragment">V tomto případě: 12 měsíců = 12 čísel</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Úkol</h2>
+					<ul>
+						<li class="fragment">Vytvoř pole s názvy měsíců (12 prvků)</li>
+						<li class="fragment">Vytvoř pole s počty dnů v měsících</li>
+						<li class="fragment">Vypiš, kolik dnů má červenec a listopad pomocí pole</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Co je to List?</h2>
+					<ul>
+						<li class="fragment">Flexibilní seznam hodnot (podobný poli)</li>
+						<li class="fragment">Nemusíme znát předem velikost</li>
+						<li class="fragment">Potřebuje knihovnu: <code>using System.Collections.Generic;</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Vytvoření Listu</h2>
+					<pre><code class="language-csharp" data-line-numbers>List&lt;int&gt; numbers = new List&lt;int&gt;();
+List&lt;int&gt; numbers2 = new List&lt;int&gt; { 10, 20, 30 };
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Přidávání a přístup</h2>
+					<pre><code class="language-csharp" data-line-numbers>numbers.Add(40); // přidá 40 na konec seznamu
+int prvni = numbers[0]; // přístup k prvnímu prvku
+int kolik = numbers.Count; // počet prvků v seznamu
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Mazání prvků</h2>
+					<pre><code class="language-csharp" data-line-numbers>numbers.Remove(20);    // smaže první výskyt 20
+numbers.RemoveAt(1);   // smaže prvek na indexu 1
+</code></pre>
+				</section>
+
+				<section>
+					<h2>ÚKOL</h2>
+					<p>1. Vytvoř List s čísly: 100, 200, 300</p>
+					<p>2. Přidej číslo 400</p>
+					<p>3. Smaž 200</p>
+					<p>4. Vypiš počet prvků v listu</p>
+					<p>5. Vypiš první prvek</p>
+				</section>
+
+
+
+			</section>
+
+
+
+			<section>
+				<section>
+					<h2>Co je cyklus?</h2>
+					<ul>
+						<li class="fragment">Umožní opakovat stejný kód víckrát</li>
+						<li class="fragment">Šetří čas i místo v programu</li>
+						<li class="fragment">Hodí se třeba pro práci s polem nebo Listem</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Cyklus for</h2>
+					<pre><code class="language-csharp" data-line-numbers>for (int i = 0; i < 5; i++) {
+    Console.WriteLine("Ahoj");
+}
+  </code></pre>
+					<p class="fragment">Vypíše „Ahoj“ pětkrát</p>
+				</section>
+
+				<section>
+					<h2>Procházení pole pomocí for</h2>
+					<pre><code class="language-csharp" data-line-numbers>string[] names = { "Anna", "Tom", "Eva" };
+
+for (int i = 0; i < names.Length; i++) {
+    Console.WriteLine(names[i]);
+}
+  </code></pre>
+					<p class="fragment">Vypíše všechna jména</p>
+				</section>
+
+				<section>
+					<h2>Cyklus foreach</h2>
+					<pre><code class="language-csharp" data-line-numbers>List&lt;int&gt; scores = new List&lt;int&gt; { 5, 3, 1 };
+
+foreach (int score in scores) {
+    Console.WriteLine(score);
+}
+  </code></pre>
+					<p class="fragment">Pro každý prvek v Listu udělá to stejné</p>
+				</section>
+
+				<section>
+					<h2>Cyklus while</h2>
+					<pre><code class="language-csharp" data-line-numbers>int x = 0;
+
+while (x < 3) {
+    Console.WriteLine("Zdar");
+    x++;
+}
+  </code></pre>
+					<p class="fragment">Opakuje se, dokud <code>x < 3</code></p>
+				</section>
+				<section>
+					<h2>Úkol</h2>
+					<p>Vytvoř pole se 3 zvířaty.</p>
+					<p>Pomocí cyklu <code>for</code> i <code>foreach</code> je všechny vypiš do konzole.</p>
+					<pre class="fragment"><code class="language-csharp" data-line-numbers>Kočka
+Pes
+Slon
+  </code></pre>
+				</section>
+				<section>
+					<h2>Úkol</h2>
+					<ul>
+						<li>Zeptej se uživatele na 3 čísla.</li>
+						<li>Každé zadané číslo si ulož.</li>
+						<li>Po zadání všech 3 čísel je vypiš do konzole.</li>
+					</ul>
+				</section>
+
+
+
+			</section>
+			<section>
+				<section>
+					<h1>Git a GitHub</h1> Nejlepší přítel vývojáře
+				</section>
+				<section>
+					<h2>Git</h2>
+					<ul>
+						<li class="fragment">Nástroj na verzování</li>
+						<li class="fragment">Umožňuje sledovat změny v kódu</li>
+						<li class="fragment">Pomáhá dokumentovat vývoj</li>
+						<li class="fragment">Umožňuje spolupráci více lidí na jednom projektu</li>
+					</ul>
+				</section>
+				<section>
+					<h2>GitHub</h2>
+					<ul>
+						<li class="fragment">GitHub je <em>(cloud-based)</em> vývojářská platforma využívající nástroj
+							Git</li>
+						<li class="fragment">Přináší super flexibilní spolupráci</li>
+						<li class="fragment">Umožňuje správu verzí, issues, pull requestů a týmovou práci</li>
+						<li class="fragment">Nabízí další nástroje jako např. <strong>GitHub Actions</strong> pro
+							automatizaci</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Git - Terminologie</h2>
+					<ul>
+						<li class="fragment">Git repo (repozitář)</li>
+						<li class="fragment">Složka, ve které se inicializuje Git repozitář</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Clone</h2>
+					<ul>
+						<li class="fragment">Stáhnutí repozitáře k sobě na zařízení</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Commit</h2>
+					<ul>
+						<li class="fragment">„Aktualizace“ kódu</li>
+						<li class="fragment">Zaznamenání změn v repozitáři</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Push</h2>
+					<ul>
+						<li class="fragment">Odeslání změn do vzdáleného repozitáře (např. GitHub)</li>
+						<li class="fragment">Musíš mít práva k zápisu</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Pull</h2>
+					<ul>
+						<li class="fragment">Stáhnutí aktualizací z repozitáře</li>
+						<li class="fragment">Používá se po klonování nebo při aktualizaci</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fork</h2>
+					<ul>
+						<li class="fragment">Vytvoření vlastní kopie cizího repozitáře</li>
+						<li class="fragment">Používá se při práci na Open Source projektech</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Open-Source</h2>
+					<ul>
+						<li class="fragment">Projekt s veřejným kódem</li>
+						<li class="fragment">Licence povoluje používání, úpravy i sdílení</li>
+						<li class="fragment">Příklad: Android je postavený na Linuxu</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Branch (větev)</h2>
+					<ul>
+						<li class="fragment">Alternativní verze kódu</li>
+						<li class="fragment">Např. „main“, „dev“, „feature-login“</li>
+						<li class="fragment">Každá větev může obsahovat jiné změny</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Merge</h2>
+					<ul>
+						<li class="fragment">Spojení změn z jedné větve do druhé</li>
+						<li class="fragment">Často se spojuje „dev“ do „main“</li>
+						<li class="fragment">Pozor na konflikty!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Přihlášení do GitHubu</h2>
+					<ul>
+						<li class="fragment">Vytvoř si účet na <a href="https://github.com"
+								target="_blank">github.com</a></li>
+						<li class="fragment">Otevři terminál a nainstaluj Git:</li>
+					</ul>
+					<pre class="fragment"><code class="language-bash">sudo apt update
+sudo apt install git
+</code></pre>
+					<ul>
+						<li class="fragment">Nastav své jméno a e-mail pro Git:</li>
+					</ul>
+					<pre class="fragment"><code class="language-bash">git config --global user.name "TvéJméno"
+git config --global user.email "tvůj@email.com"
+</code></pre>
+					<p class="fragment">Tím se nastaví tvoje identita pro všechny Git commity.</p>
+				</section>
+
+
+				<section>
+					<h2>Git Commit C# projektu</h2>
+					<pre><code class="language-bash"># Inicializuj Git v projektu
+git init
+
+# Vyber všechny soubory, které chceš připravit k uložení (commitnutí)
+git add .
+
+# Proveď první commit
+git commit -m "První commit C# aplikace"
+
+# Přidej vzdálený repozitář z GitHubu
+git remote add origin https://github.com/uzivatel/jmeno-repozitare.git
+
+# Nahraj změny do GitHubu
+git push -u origin main
+</code></pre>
+				</section>
+
+			</section>
+
 		</div>
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
 </html>
