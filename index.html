@@ -22,16 +22,37 @@
 				<h1>DEN 2</h1>
 			</section>
 			<section>
-				<h2>Opakování</h2>
-				<ul>
-					<li>Co je to proměnná a k čemu slouží?</li>
-					<li>Jaký je rozdíl mezi <code>int</code>, <code>string</code> a <code>bool</code>?</li>
-					<li>Jaký je rozdíl mezi <code>Console.Write</code> a <code>Console.WriteLine</code>?</li>
-					<li>Jak načteme vstup od uživatele?</li>
-					<li>Jak vypadá základní struktura C# programu?</li>
-					<li>Co znamená <code>using System;</code> na začátku souboru?</li>
-					<li>K čemu slouží komentáře v kódu?</li>
-				</ul>
+				<section>
+					<h1>Opakování</h1>
+				</section>
+				<section>
+					<p>Co je to proměnná a k čemu slouží?</p>
+				</section>
+
+				<section>
+					<p>Jaký je rozdíl mezi <code>int</code>, <code>string</code> a <code>bool</code>?</p>
+				</section>
+
+				<section>
+					<p>Jaký je rozdíl mezi <code>Console.Write</code> a <code>Console.WriteLine</code>?</p>
+				</section>
+
+				<section>
+					<p>Jak načteme vstup od uživatele?</p>
+				</section>
+
+				<section>
+					<p>Jak vypadá základní struktura C# programu?</p>
+				</section>
+
+				<section>
+					<p>Co znamená <code>using System;</code> na začátku souboru?</p>
+				</section>
+
+				<section>
+					<p>K čemu slouží komentáře v kódu?</p>
+				</section>
+
 			</section>
 
 
@@ -63,35 +84,7 @@
 				</section>
 
 				<section>
-					<h2>Příklad: += a -=</h2>
-					<pre><code class="language-csharp" data-line-numbers>int value = 10;
-
-value += 5;  // value = 15
-value -= 3;  // value = 12
-
-Console.WriteLine(value);
-  </code></pre>
-				</section>
-
-				<section>
-					<h2>Příklad: *= a /=</h2>
-					<pre><code class="language-csharp" data-line-numbers>int number = 4;
-
-number *= 2;  // number = 8
-number /= 4;  // number = 2
-
-Console.WriteLine(number);
-  </code></pre>
-				</section>
-
-				<section>
-					<h2>Příklad: %= (zbytek po dělení)</h2>
-					<pre><code class="language-csharp" data-line-numbers>int total = 10;
-
-total %= 4;  // total = 2 (zbytek z 10 / 4)
-
-Console.WriteLine(total);
-  </code></pre>
+					<h2>Ukázka</h2>
 				</section>
 
 				<section>
@@ -102,17 +95,6 @@ Console.WriteLine(total);
 					</ul>
 				</section>
 
-				<section>
-					<h2>příklad</h2>
-					<pre><code class="language-csharp" data-line-numbers>int sum = 0;
-
-for (int i = 1; i <= 5; i++) {
-    sum += i;  // přičítá čísla 1 až 5
-}
-
-Console.WriteLine("Součet: " + sum);  // 15
-  </code></pre>
-				</section>
 				<section>
 					<h2>ÚKOL</h2>
 					<p>1. Vytvoř proměnnou <code>int score = 0;</code></p>
@@ -346,7 +328,7 @@ else {
 				</section>
 
 				<section>
-					<h2>Příklad porovnání</h2>
+					<h2>Ukázka porovnání</h2>
 				</section>
 				<section>
 					<h2>Úkol</h2>
@@ -363,7 +345,7 @@ else {
 			</section>
 			<section>
 				<section>
-					<h1>Parsing v C#</h1>
+					<h1>Parsing</h1>
 					<p class="fragment">Jak převést <code>string</code> na číslo a nezabít program</p>
 				</section>
 
@@ -377,20 +359,8 @@ else {
 						<li class="fragment">Musíme tedy převést (parsovat) řetězec na číselnou hodnotu</li>
 					</ul>
 				</section>
-
 				<section>
 					<h2>Metoda <code>Parse()</code></h2>
-					<pre><code class="language-csharp" data-line-numbers>int i = int.Parse("123");    // OK
-int j = int.Parse("abc");    // Program spadne
-  </code></pre>
-					<ul>
-						<li class="fragment"><code>Parse()</code> je jednoduché</li>
-						<li class="fragment">ALE způsobí pád programu, pokud vstup není validní</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Obecný tvar metody Parse</h2>
 					<pre><code class="language-csharp" data-line-numbers>int x = int.Parse("123");
 double y = double.Parse("3.14");
 decimal z = decimal.Parse("100.25");
@@ -400,11 +370,31 @@ decimal z = decimal.Parse("100.25");
 
 				<section>
 					<h2>Co když uživatel zadá neplatný vstup?</h2>
-					<p class="fragment">Program spadne</p>
-					<pre class="fragment"><code class="language-csharp" data-line-numbers>string input = "neco";
-int number = int.Parse(input); // Výjimka: Formátová chyba
+				</section>
+				<section>
+					<h2>Ukázka</h2>
+				</section>
+				<section>
+					<h2>Jak funguje <code>TryParse</code></h2>
+					<ul>
+						<li class="fragment">Vrací <code>true</code>, pokud se převod povedl</li>
+						<li class="fragment">Vrací <code>false</code>, pokud převod selhal</li>
+						<li class="fragment">Výsledek ukládá do proměnné pomocí <code>out</code></li>
+						<li class="fragment">Zabraňuje pádu programu při neplatném vstupu</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Metoda <code>TryParse()</code></h2>
+					<pre><code class="language-csharp" data-line-numbers>int x;
+bool success1 = int.TryParse("123", out x);
+
+double y;
+bool success2 = double.TryParse("3.14", out y);
+
+decimal z;
+bool success3 = decimal.TryParse("100.25", out z);
   </code></pre>
-					<p class="fragment">Řešením je použití <code>TryParse()</code></p>
+					<p class="fragment">Všechny metody mají tvar: <code>typ.TryParse(string, out typ)</code></p>
 				</section>
 
 				<section>
@@ -423,50 +413,6 @@ if (ok) {
 						<li class="fragment">Výsledek převodu je uložen do <code>x</code></li>
 					</ul>
 				</section>
-
-				<section>
-					<h2>Obecný tvar TryParse</h2>
-					<pre><code class="language-csharp" data-line-numbers>// Int:
-bool b1 = int.TryParse(s, out int x);
-
-// Decimal:
-bool b2 = decimal.TryParse(s, out decimal d);
-  </code></pre>
-					<p class="fragment">Výstupní proměnná <code>x</code> je naplněna hodnotou nebo nulou</p>
-				</section>
-
-				<section>
-					<h2>Jak funguje <code>out</code> v TryParse</h2>
-					<ul>
-						<li class="fragment">Proměnná je předána jako „prázdná schránka“</li>
-						<li class="fragment">Metoda TryParse se do ní pokusí uložit výsledek</li>
-						<li class="fragment">Pokud se převod podaří:</li>
-						<ul>
-							<li class="fragment">→ proměnná obsahuje převedené číslo</li>
-							<li class="fragment">→ TryParse vrátí <code>true</code></li>
-						</ul>
-						<li class="fragment">Pokud se převod nepodaří:</li>
-						<ul>
-							<li class="fragment">→ proměnná zůstane na výchozí hodnotě (např. 0)</li>
-							<li class="fragment">→ TryParse vrátí <code>false</code></li>
-						</ul>
-					</ul>
-				</section>
-
-
-				<section>
-					<h2>Ukázka použití v podmínce</h2>
-					<pre><code class="language-csharp" data-line-numbers>Console.Write("Zadej číslo: ");
-string input = Console.ReadLine();
-
-if (int.TryParse(input, out int number)) {
-    Console.WriteLine("Díky! Zadals číslo: " + number);
-} else {
-    Console.WriteLine("Tohle nebylo platné číslo.");
-}
-  </code></pre>
-				</section>
-
 				<section>
 					<h2>TryParse = Robustní kód</h2>
 					<ul>
@@ -481,7 +427,7 @@ if (int.TryParse(input, out int number)) {
 			</section>
 			<section>
 				<section>
-					<h1>Pole v C#</h1>
+					<h1>Pole</h1>
 					<p class="fragment">Umožňují uložit více hodnot do jedné proměnné</p>
 				</section>
 
@@ -539,6 +485,11 @@ Console.WriteLine(daysInMonths[0]);     // 31
 			</section>
 			<section>
 				<section>
+					<h1>List</h1>
+					<p class="fragment">Dynamické seznamy pro ukládání více hodnot</p>
+				</section>
+
+				<section>
 					<h2>Co je to List?</h2>
 					<ul>
 						<li class="fragment">Flexibilní seznam hodnot (podobný poli)</li>
@@ -585,6 +536,11 @@ numbers.RemoveAt(1);   // smaže prvek na indexu 1
 
 
 			<section>
+				<section>
+					<h1>Cyklus</h1>
+					<p class="fragment">Opakování části kódu několikrát za sebou</p>
+				</section>
+
 				<section>
 					<h2>Co je cyklus?</h2>
 					<ul>
@@ -659,7 +615,8 @@ Slon
 			</section>
 			<section>
 				<section>
-					<h1>Git a GitHub</h1> Nejlepší přítel vývojáře
+					<h1>Git a GitHub</h1>
+					<p class="fragment">Nejlepší přítel vývojáře</p>
 				</section>
 				<section>
 					<h2>Git</h2>
